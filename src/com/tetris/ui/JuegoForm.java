@@ -1,9 +1,14 @@
-package com.company;
+package com.tetris.ui;
+
+import com.tetris.game.AreaJuego;
+import com.tetris.game.HiloJuego;
+import com.tetris.util.InfoArea;
+import com.tetris.game.ListenerTeclado;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class JuegoForm extends JFrame {
+public class JuegoForm extends JFrame implements InfoArea {
 
     private JPanel background;
     private JPanel placeholder;
@@ -27,10 +32,10 @@ public class JuegoForm extends JFrame {
 
         // Creacion de placeholder para determinar el area de juego
         placeholder = new JPanel();
-        createPlaceHolder(placeholder);
+        createPlaceHolder(placeholder, 800, 600);
 
         // Instanciación de area de juego
-        areaJuego = new AreaJuego(placeholder, 10);
+        areaJuego = new AreaJuego(placeholder);
         this.add(areaJuego);
 
         //Creacion de panel del background
@@ -45,8 +50,6 @@ public class JuegoForm extends JFrame {
         this.addKeyListener(input);
         iniciarJuego();
 
-
-
     }
 
     public void iniciarJuego() {
@@ -54,9 +57,16 @@ public class JuegoForm extends JFrame {
     }
 
 
-    private void createPlaceHolder(JPanel placeholder) {
-        placeholder.setBounds(275,40,250 + 1,500 + 1);
-        placeholder.setBackground(Color.white);
+    private void createPlaceHolder(JPanel placeholder, int displayWidth, int displayHeight) {
 
+        int width = 200;
+        int gridCellSize = width / GRID_COLUMNAS;
+        int height = gridCellSize * 24;
+        int x = (displayWidth - width) / 2;
+        int y = (displayHeight - height) / 2;
+
+        // SE SUMA 1 AL ANCHO Y ALTO PARA QUE SE DIBUJEN LOS BORDES DE INFERIOR Y DERECHOS
+        placeholder.setBounds(x, y, width + 1, height + 1);
+        placeholder.setBackground(Color.white);
     }
 }
