@@ -1,4 +1,4 @@
-package com.company;
+package com.tetris.ui;
 
 import javax.swing.*;
 

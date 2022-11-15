@@ -1,18 +1,24 @@
-package com.company;
+package com.tetris;
+
+import com.tetris.util.ColorDecoder;
+import com.tetris.util.InfoArea;
+import com.tetris.util.TiposBloques;
 
 import java.awt.*;
 
-public class Tetromino  implements TiposBloques {
+public class Tetromino  implements TiposBloques, InfoArea {
 
     private int[][] forma;
     private Color color;
     private int posX;
     private int posY;
+    private int tipo;
 
 
-    public Tetromino(int[][] forma, Color color){
+    public Tetromino(int[][] forma, int tipo){
         this.forma = forma;
-        this.color = color;
+        this.color = ColorDecoder.getColorFromInt(tipo);
+        this.tipo = tipo;
         spawnBloque();
     }
 
@@ -21,16 +27,22 @@ public class Tetromino  implements TiposBloques {
 
         int bloqueWidth = getWidth();
         int bloqueHeight = getHeight();
-        int gridColumnas = 10;
-        int gridFilas = 20;
 
-        this.posY = -bloqueHeight;
-        this.posX = (gridColumnas - bloqueWidth) / 2;
+        this.posY = 0;
+        this.posX = (GRID_COLUMNAS - bloqueWidth) / 2;
 
     }
 
+    public int getBordeInferior() {
+        return (this.posY + this.getHeight());
+    }
+
+
     public int[][] getForma() {
         return forma;
+    }
+    public int getCellForma(int i, int j) {
+        return forma[i][j];
     }
 
     public void setForma(int[][] forma) {
@@ -67,6 +79,10 @@ public class Tetromino  implements TiposBloques {
 
     public int getHeight() {
         return this.forma.length;
+    }
+
+    public int getTipo() {
+        return tipo;
     }
 
     public void moverAbajo() { posY++; }

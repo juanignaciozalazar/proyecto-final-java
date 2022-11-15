@@ -1,15 +1,15 @@
-package com.company;
+package com.tetris.util;
 
 import java.awt.*;
 
 public interface TiposBloques {
-    final int BLOQUE_I = 0;
-    final int BLOQUE_L = 1;
-    final int BLOQUE_J = 2;
-    final int BLOQUE_S = 3;
-    final int BLOQUE_Z = 4;
-    final int BLOQUE_T = 5;
-    final int BLOQUE_O = 6;
+    final int BLOQUE_I = 1,
+            BLOQUE_L = 2,
+            BLOQUE_Z = 5,
+            BLOQUE_T = 6,
+            BLOQUE_O = 7,
+            BLOQUE_S = 4,
+            BLOQUE_J = 3;
 
     final int[][] FORMA_I = {
             {1},
