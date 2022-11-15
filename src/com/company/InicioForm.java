@@ -31,6 +31,7 @@ public class InicioForm extends JFrame {
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     @Override
                     public void run() {
+                        dispose();
                         Dimension displaySize = Toolkit.getDefaultToolkit().getScreenSize();
                         JFrame inicio = new JuegoForm(displaySize.width, displaySize.height);
                         inicio.setVisible(true);
