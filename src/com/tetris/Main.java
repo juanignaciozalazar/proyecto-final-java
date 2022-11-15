@@ -1,4 +1,6 @@
-package com.company;
+package com.tetris;
+
+import com.tetris.ui.JuegoForm;
 
 import javax.swing.*;
 import java.awt.*;

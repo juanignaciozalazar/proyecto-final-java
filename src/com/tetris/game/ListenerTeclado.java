@@ -1,4 +1,6 @@
-package com.company;
+package com.tetris.game;
+
+import com.tetris.game.AreaJuego;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -20,11 +22,23 @@ public class ListenerTeclado implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case VK_DOWN: areaJuego.moverBloqueAbajo(); break;
-            case VK_LEFT: areaJuego.moverBloqueIzquierda(); break;
-            case VK_RIGHT: areaJuego.moverBloqueDerecha(); break;
+        if (!areaJuego.blockIsNull()) {
+
+            int keyCode = e.getKeyCode();
+
+            if (keyCode == VK_DOWN) {
+                areaJuego.moverBloqueAbajo();
+            }
+
+            if (keyCode == VK_LEFT) {
+                areaJuego.moverBloqueIzquierda();
+            }
+
+            if (keyCode == VK_RIGHT) {
+                areaJuego.moverBloqueDerecha();
+            }
         }
+
     }
 
     @Override
