@@ -81,7 +81,7 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
 
     // Metodos para rotar el bloque
     public void rotarBloqueAntiHorario() {
-        block.getForma();
+        block.getFormaActual();
     }
 
     public void rotarBloqueHorario() {
@@ -107,7 +107,6 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
                 gridBackground[block.getPosY() + i][block.getPosX() + j] = (block.getCellForma(i,j) * block.getTipo());
             }
         }
-        testPrintBackground();
         deleteBloque();
     }
 
@@ -152,7 +151,7 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
 
             for (int columna = 0; columna < width; columna++) {
 
-                if (block.getForma()[fila][columna] == 1) {
+                if (block.getFormaActual()[fila][columna] == 1) {
 
                     int x = gridCellSize * (block.getPosX() + columna);
                     int y = gridCellSize * (block.getPosY() + fila);
@@ -186,17 +185,6 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
             }
         }
     }
-
-    private void testPrintBackground() {
-        for (int fila = 0; fila < GRID_FILASREALES; fila++) {
-            for (int columna = 0; columna < GRID_COLUMNAS; columna++) {
-                System.out.print(gridBackground[fila][columna]);
-            }
-            System.out.println();
-        }
-        System.out.println("---------------------------------------------");
-    }
-
 
 
 

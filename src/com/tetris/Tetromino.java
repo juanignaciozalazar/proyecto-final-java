@@ -8,17 +8,19 @@ import java.awt.*;
 
 public class Tetromino  implements TiposBloques, InfoArea {
 
-    private int[][] forma;
+    private int[][][] forma;
     private Color color;
     private int posX;
     private int posY;
     private int tipo;
+    private int estado;
 
 
-    public Tetromino(int[][] forma, int tipo){
+    public Tetromino(int[][][] forma, int tipo){
         this.forma = forma;
         this.color = ColorDecoder.getColorFromInt(tipo);
         this.tipo = tipo;
+        this.estado = 0;
         spawnBloque();
     }
 
@@ -38,14 +40,14 @@ public class Tetromino  implements TiposBloques, InfoArea {
     }
 
 
-    public int[][] getForma() {
-        return forma;
+    public int[][] getFormaActual() {
+        return forma[estado];
     }
     public int getCellForma(int i, int j) {
-        return forma[i][j];
+        return forma[estado][i][j];
     }
 
-    public void setForma(int[][] forma) {
+    public void setForma(int[][][] forma) {
         this.forma = forma;
     }
 
@@ -74,15 +76,19 @@ public class Tetromino  implements TiposBloques, InfoArea {
     }
 
     public int getWidth() {
-        return this.forma[0].length;
+        return this.forma[estado][0].length;
     }
 
     public int getHeight() {
-        return this.forma.length;
+        return this.forma[estado].length;
     }
 
     public int getTipo() {
         return tipo;
+    }
+
+    public int getEstado() {
+        return estado;
     }
 
     public void moverAbajo() { posY++; }
