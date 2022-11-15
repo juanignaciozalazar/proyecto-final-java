@@ -78,17 +78,26 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
         }
     }
 
+    public void soltarBloque() {
+        while (!blockIsNull()) {
+            moverBloqueAbajo();
+        }
+    }
 
     // Metodos para rotar el bloque
     public void rotarBloqueAntiHorario() {
-        block.getFormaActual();
+        block.rotarAntihorario();
+        repaint();
     }
 
     public void rotarBloqueHorario() {
-
+        block.rotarHorario();
+        repaint();
     }
 
     public void rotarBloque180() {
+        block.rotar180();
+        repaint();
     }
 
     // Metodos tecnicos
@@ -123,9 +132,9 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
 
         drawGrid(g);
         drawBackground(g);
-        drawBlock(g);
-
-
+        if (!blockIsNull()) {
+            drawBlock(g);
+        }
 
     }
 
@@ -163,7 +172,7 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
     }
 
     public void drawGridBlock(Graphics g, Color color, int x, int y) {
-        g.setColor(block.getColor());
+        g.setColor(color);
         g.fillRect(x, y, gridCellSize, gridCellSize);
         g.setColor(Color.black);
         g.drawRect(x, y, gridCellSize, gridCellSize);

@@ -15,7 +15,7 @@ public class HiloJuego extends Thread implements TiposBloques {
     public void run() {
         while (true) {
 
-            areaJuego.createBlock(BLOQUE_O);
+            areaJuego.createBlock(BLOQUE_T);
 
             while (areaJuego.moverBloqueAbajo() == true) {
                 try {
