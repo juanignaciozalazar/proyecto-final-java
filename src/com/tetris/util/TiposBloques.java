@@ -103,7 +103,7 @@ public interface TiposBloques {
             {
                     {0,1},
                     {1,1},
-                    {0,1}
+                    {1,0}
             },
             {
                     {1,1,0},
@@ -112,7 +112,7 @@ public interface TiposBloques {
             {
                     {0,1},
                     {1,1},
-                    {0,1}
+                    {1,0}
             }
     };
 

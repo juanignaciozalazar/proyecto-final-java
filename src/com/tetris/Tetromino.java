@@ -30,7 +30,7 @@ public class Tetromino  implements TiposBloques, InfoArea {
         int bloqueWidth = getWidth();
         int bloqueHeight = getHeight();
 
-        this.posY = 0;
+        this.posY = 3 - bloqueHeight;
         this.posX = (GRID_COLUMNAS - bloqueWidth) / 2;
 
     }
@@ -96,6 +96,24 @@ public class Tetromino  implements TiposBloques, InfoArea {
     public void moverDerecha() { posX++; }
 
     public void moverIzquierda() { posX--;}
+
+    public void rotarHorario() {
+        if (estado < 3) {
+            estado++;
+        } else estado = 0;
+    }
+
+    public void rotarAntihorario() {
+        if (estado > 0) {
+            estado--;
+        } else estado = 3;
+    }
+
+    public void rotar180() {
+        if (estado < 2) {
+            estado += 2;
+        } else estado -= 2;
+    }
 
 
 
