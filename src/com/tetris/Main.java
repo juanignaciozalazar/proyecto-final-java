@@ -15,7 +15,6 @@ public class Main {
                 Dimension displaySize = Toolkit.getDefaultToolkit().getScreenSize();
                 JFrame inicio = new JuegoForm(displaySize.width, displaySize.height);
                 inicio.setVisible(true);
-
             }
         });
 
