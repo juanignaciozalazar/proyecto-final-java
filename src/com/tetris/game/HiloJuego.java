@@ -15,9 +15,10 @@ public class HiloJuego extends Thread implements TiposBloques {
     public void run() {
         while (true) {
 
-            areaJuego.createBlock(BLOQUE_O);
+            int nuevoBloque = (int) (Math.random() * 8);
+            areaJuego.createBlock(nuevoBloque);
 
-            while (areaJuego.moverBloqueAbajo() == true) {
+            while (areaJuego.moverBloqueAbajo()) {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -25,7 +26,20 @@ public class HiloJuego extends Thread implements TiposBloques {
                 }
             }
 
+            if (areaJuego.checkOOB()) {
+                areaJuego.deleteBloque();
+                break;
+            }
+
+            if (!areaJuego.blockIsNull())
+                areaJuego.addBloqueBackground();
+            areaJuego.completarFilas();
+
         }
+
+        System.out.println("FIN DEL JUEGO");
+        System.out.println();
+        System.out.println("Puntuación: "      );
 
     }
 

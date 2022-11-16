@@ -1,5 +1,5 @@
 package com.tetris;
-
+import com.tetris.ui.InicioForm;
 import com.tetris.ui.JuegoForm;
 
 import javax.swing.*;
@@ -18,7 +18,5 @@ public class Main {
 
             }
         });
-
-
     }
 }

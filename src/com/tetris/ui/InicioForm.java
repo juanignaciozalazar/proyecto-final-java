@@ -14,7 +14,7 @@ public class InicioForm extends JFrame {
 
 
     public InicioForm(int displayWidth, int displayHeight) {
-        super("Tetris pero croto");
+        super("el tetri");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         // Calcular posicion central de la pantalla y tamaño de la ventana
@@ -53,5 +53,5 @@ public class InicioForm extends JFrame {
             }
         });
     }
-
 }
+

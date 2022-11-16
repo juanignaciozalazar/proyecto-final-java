@@ -12,6 +12,8 @@ public class JuegoForm extends JFrame implements InfoArea {
 
     private JPanel background;
     private JPanel placeholder;
+    private JLabel puntaje;
+    private JLabel nivel;
     private AreaJuego areaJuego;
 
     public JuegoForm(int displayWidth, int displayHeight) {
@@ -33,10 +35,30 @@ public class JuegoForm extends JFrame implements InfoArea {
         // Creacion de placeholder para determinar el area de juego
         placeholder = new JPanel();
         createPlaceHolder(placeholder, 800, 600);
-
+		
         // Instanciación de area de juego
         areaJuego = new AreaJuego(placeholder);
         this.add(areaJuego);
+
+        // Creacion de ventanas de puntuación y nivel.
+
+        Font mifuente = new Font("Arial", 0, 20);
+
+        puntaje = new JLabel();
+        puntaje.setBounds(areaJuego.getX() + areaJuego.getWidth() + 20, areaJuego.getY(), 200, 100);
+        puntaje.setFont(mifuente);
+        puntaje.setForeground(Color.WHITE);
+        puntaje.setText("PUNTUACION :\n");
+        puntaje.setVisible(true);
+        this.add(puntaje);
+
+        nivel = new JLabel();
+        nivel.setBounds(areaJuego.getX() + areaJuego.getWidth() + 20, areaJuego.getY() + 100, 200, 100);
+        nivel.setFont(mifuente);
+        nivel.setForeground(Color.WHITE);
+        nivel.setText("NIVEL: ");
+        nivel.setVisible(true);
+        this.add(nivel);
 
         //Creacion de panel del background
         background = new JPanel();
