@@ -57,8 +57,6 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
                 block.moverAbajo();
                 repaint();
                 return true;
-            } else {
-                addBloqueBackground();
             }
         }
         return false;
@@ -79,18 +77,36 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
     }
 
     public void soltarBloque() {
-        while (!blockIsNull()) {
-            moverBloqueAbajo();
+        while (moverBloqueAbajo()) {
         }
+        addBloqueBackground();
+
     }
 
     // Metodos para rotar el bloque
     public void rotarBloqueAntiHorario() {
+
+        // Corrección de rotacion fuera de limites.
+
+        // Al rotar el bloque, la altura se vuelve el ancho, y vice versa.
+        int x = block.getPosX();
+        int h = block.getHeight();
+        if (x + h > GRID_COLUMNAS) {
+            block.setPosX(GRID_COLUMNAS - h);
+        }
+
         block.rotarAntihorario();
         repaint();
     }
 
     public void rotarBloqueHorario() {
+        // Al rotar el bloque, la altura se vuelve el ancho, y vice versa.
+        int x = block.getPosX();
+        int h = block.getHeight();
+        if (x + h > GRID_COLUMNAS) {
+            block.setPosX(GRID_COLUMNAS - h);
+        }
+
         block.rotarHorario();
         repaint();
     }
@@ -167,7 +183,7 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
 
         int[][] forma = block.getFormaActual();
         int w = block.getWidth();
-        int h = block.getHeight();
+        int h = block.getHeight() ;
 
         for (int fila = 0; fila < h; fila++) {
             for (int columna = w - 1; columna >= 0; columna--) {
@@ -184,6 +200,56 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
         return false;
     }
 
+    public boolean checkOOB() {
+        if (!blockIsNull()) {
+            if (block.getPosY() < 4) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
+    public void completarFilas() {
+
+        int total = 0;
+        boolean lineaCompletada = true;
+
+
+        for (int fila = GRID_FILASREALES - 1; fila >= 0; fila--) {
+            for (int columna = 0; columna < GRID_COLUMNAS; columna++) {
+                if (gridBackground[fila][columna] == 0) {
+                    lineaCompletada = false;
+                    break;
+                }
+            }
+
+            if (lineaCompletada) {
+                completarFila(fila);
+                correrFila(fila);
+                fila++;
+                repaint();
+            }
+            total++;
+            lineaCompletada = true;
+        }
+    }
+
+    public void completarFila(int fila) {
+        for(int columna = 0; columna < GRID_COLUMNAS; columna++) {
+            gridBackground[fila][columna] = 0;
+        }
+    }
+
+    public void correrFila(int filaCorrer) {
+        for (int fila = filaCorrer; fila > 0; fila--) {
+            for (int columna = 0; columna < GRID_COLUMNAS; columna++) {
+                gridBackground[fila][columna] = gridBackground[fila - 1][columna];
+            }
+        }
+    }
 
 
     public void addBloqueBackground() {
@@ -193,13 +259,12 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
                 if (block.getCellForma(i,j) != 0) {
                     gridBackground[block.getPosY() + i][block.getPosX() + j] = (block.getCellForma(i,j) * block.getTipo());
                 }
-
             }
         }
         deleteBloque();
     }
 
-    private void deleteBloque() {
+    public void deleteBloque() {
         this.block = null;
     }
 
