@@ -15,7 +15,6 @@ public class Main {
                 JFrame frame = new InicioForm(300,300);
                  frame.setVisible(true);
                  frame.setLocationRelativeTo(null);
-
             }
         });
     }

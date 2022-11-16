@@ -35,7 +35,7 @@ public class JuegoForm extends JFrame implements InfoArea {
         // Creacion de placeholder para determinar el area de juego
         placeholder = new JPanel();
         createPlaceHolder(placeholder, 800, 600);
-		
+        
         // Instanciación de area de juego
         areaJuego = new AreaJuego(placeholder);
         this.add(areaJuego);
@@ -91,4 +91,8 @@ public class JuegoForm extends JFrame implements InfoArea {
         placeholder.setBounds(x, y, width + 1, height + 1);
         placeholder.setBackground(Color.white);
     }
+
+
+
+
 }
