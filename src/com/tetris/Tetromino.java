@@ -30,7 +30,7 @@ public class Tetromino  implements TiposBloques, InfoArea {
         int bloqueWidth = getWidth();
         int bloqueHeight = getHeight();
 
-        this.posY = 0;
+        this.posY = 3 - bloqueHeight;
         this.posX = (GRID_COLUMNAS - bloqueWidth) / 2;
 
     }

@@ -53,7 +53,7 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
     // Metodos de movimiento del bloque
     public boolean moverBloqueAbajo() {
         if (!blockIsNull()) {
-            if ( checkFondo() == false ) {
+            if ( checkBordeAbajo() == false && checkColisionAbajo() == false ) {
                 block.moverAbajo();
                 repaint();
                 return true;
@@ -65,14 +65,14 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
     }
 
     public void moverBloqueDerecha() {
-        if (block.getPosX() + block.getWidth() < GRID_COLUMNAS) {
+        if (checkBordeDerecho() == false && checkColisionDerecha() == false) {
             block.moverDerecha();
             repaint();
         }
     }
 
     public void moverBloqueIzquierda() {
-        if (block.getPosX() > 0) {
+        if (checkBordeIzquierdo() == false && checkColisionIzquierda() == false) {
             block.moverIzquierda();
             repaint();
         }
@@ -101,7 +101,7 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
     }
 
     // Metodos tecnicos
-    public boolean checkFondo() {
+    public boolean checkBordeAbajo() {
 
         if (block.getBordeInferior() == GRID_FILASREALES) {
             return true;
@@ -109,11 +109,91 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
         return false;
     }
 
+    public boolean checkBordeIzquierdo() {
+        if (block.getPosX() == 0)
+            return true;
+        return false;
+    }
+
+    public boolean checkBordeDerecho() {
+        if (block.getPosX() + block.getWidth() == GRID_COLUMNAS)
+            return true;
+        return false;
+    }
+
+    // Recorre el bloque por filas de cada columna de manera inversa. Para cada celda que pueda colisionar
+    public boolean checkColisionAbajo(){
+        int[][] forma = block.getFormaActual();
+        int w = block.getWidth();
+        int h = block.getHeight();
+
+        for (int columna = 0; columna < w; columna++) {
+            for (int fila = h - 1; fila >= 0; fila--) {
+                if (forma[fila][columna] != 0) {
+                    int x = columna + block.getPosX();
+                    int y = fila + block.getPosY() + 1;
+
+                    if (y < 0) break;
+                    if (gridBackground[y][x] != 0 ) return true;
+                    break;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean checkColisionIzquierda() {
+
+        int[][] forma = block.getFormaActual();
+        int w = block.getWidth();
+        int h = block.getHeight();
+
+        for (int fila = 0; fila < h; fila++) {
+            for (int columna = 0; columna < w; columna++) {
+                if (forma[fila][columna] != 0) {
+                    int x = columna + block.getPosX() - 1;
+                    int y = fila + block.getPosY();
+
+                    if (y < 0) break;
+                    if (gridBackground[y][x] != 0 ) return true;
+                    break;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean checkColisionDerecha() {
+
+        int[][] forma = block.getFormaActual();
+        int w = block.getWidth();
+        int h = block.getHeight();
+
+        for (int fila = 0; fila < h; fila++) {
+            for (int columna = w - 1; columna >= 0; columna--) {
+                if (forma[fila][columna] != 0) {
+                    int x = columna + block.getPosX() + 1;
+                    int y = fila + block.getPosY();
+
+                    if (y < 0) break;
+                    if (gridBackground[y][x] != 0 ) return true;
+                    break;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
     public void addBloqueBackground() {
 
         for (int i = 0; i < block.getHeight(); i++) {
             for ( int j = 0; j < block.getWidth(); j++ ) {
-                gridBackground[block.getPosY() + i][block.getPosX() + j] = (block.getCellForma(i,j) * block.getTipo());
+                if (block.getCellForma(i,j) != 0) {
+                    gridBackground[block.getPosY() + i][block.getPosX() + j] = (block.getCellForma(i,j) * block.getTipo());
+                }
+
             }
         }
         deleteBloque();
@@ -140,7 +220,7 @@ public class AreaJuego extends JPanel implements TiposBloques, InfoArea {
 
     private void drawGrid(Graphics g) {
         for(int columna = 0; columna < GRID_COLUMNAS; columna++) {
-            for (int fila = 0; fila < GRID_FILASREALES; fila++) {
+            for (int fila = 4; fila < GRID_FILASREALES; fila++) {
                 g.drawRect(
                         gridCellSize * columna,
                         gridCellSize * fila,
