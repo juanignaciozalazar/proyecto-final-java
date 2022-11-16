@@ -1,6 +1,9 @@
 package com.tetris.ui;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InicioForm extends JFrame {
     private JLabel Title;
@@ -11,7 +14,7 @@ public class InicioForm extends JFrame {
 
 
     public InicioForm(int displayWidth, int displayHeight) {
-        super("Tetris pero croto");
+        super("el tetri");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         // Calcular posicion central de la pantalla y tamaño de la ventana
@@ -22,7 +25,33 @@ public class InicioForm extends JFrame {
         this.setBounds(x,y,width,height);
         this.setContentPane(panelPrincipal);
 
+        botonIniciarJuego.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        dispose();
+                        Dimension displaySize = Toolkit.getDefaultToolkit().getScreenSize();
+                        JFrame inicio = new JuegoForm(displaySize.width, displaySize.height);
+                        inicio.setVisible(true);
+
+                    }
+                });
+            }
+        });
+        botonSalir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               System.exit(0);
+            }
+        });
+        botonAyuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
-
-
 }
+

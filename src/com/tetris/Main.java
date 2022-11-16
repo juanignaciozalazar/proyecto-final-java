@@ -1,5 +1,5 @@
 package com.tetris;
-
+import com.tetris.ui.InicioForm;
 import com.tetris.ui.JuegoForm;
 
 import javax.swing.*;
@@ -9,15 +9,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Dimension displaySize = Toolkit.getDefaultToolkit().getScreenSize();
-                JFrame inicio = new JuegoForm(displaySize.width, displaySize.height);
-                inicio.setVisible(true);
+                JFrame frame = new InicioForm(300,300);
+                 frame.setVisible(true);
+                 frame.setLocationRelativeTo(null);
             }
         });
-
-
     }
 }
