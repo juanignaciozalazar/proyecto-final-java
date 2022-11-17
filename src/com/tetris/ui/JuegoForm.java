@@ -15,6 +15,7 @@ public class JuegoForm extends JFrame implements InfoArea {
     private JLabel puntaje;
     private JLabel nivel;
     private AreaJuego areaJuego;
+    private Instrucciones instrucciones;
 
     public JuegoForm(int displayWidth, int displayHeight) {
 
@@ -72,12 +73,13 @@ public class JuegoForm extends JFrame implements InfoArea {
         this.addKeyListener(input);
         iniciarJuego();
 
+
     }
+
 
     public void iniciarJuego() {
         new HiloJuego(areaJuego).start();
     }
-
 
     private void createPlaceHolder(JPanel placeholder, int displayWidth, int displayHeight) {
 
