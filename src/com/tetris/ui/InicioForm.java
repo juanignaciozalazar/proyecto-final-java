@@ -4,10 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 public class InicioForm extends JFrame {
 
-    public InicioForm2() {
+    public InicioForm() {
         initComponents();
     }
 
@@ -72,7 +74,7 @@ public class InicioForm extends JFrame {
         );
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lautaro Kaufmann\\Desktop\\proyecto-final-java\\assets\\Tetris-Game-PNG-Picture.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("assets/Tetris-Game-PNG-Picture.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
