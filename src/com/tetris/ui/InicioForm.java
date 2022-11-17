@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class InicioForm extends JFrame {
 
-    public InicioForm2() {
+    public InicioForm() {
         initComponents();
     }
 
