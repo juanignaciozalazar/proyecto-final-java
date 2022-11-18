@@ -2,6 +2,8 @@ package com.tetris.game;
 
 import com.tetris.util.TiposBloques;
 
+import javax.swing.*;
+
 public class HiloJuego extends Thread implements TiposBloques {
 
     AreaJuego areaJuego;
@@ -37,10 +39,8 @@ public class HiloJuego extends Thread implements TiposBloques {
 
         }
 
-        System.out.println("FIN DEL JUEGO");
-        System.out.println();
-        System.out.println("Puntuación: "      );
 
+        JOptionPane.showMessageDialog(null,"FIN DEL JUEGO");
     }
 
 }

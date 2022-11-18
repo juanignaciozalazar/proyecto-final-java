@@ -22,7 +22,7 @@ public class InicioForm extends JFrame {
         txtTetris = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        //jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -37,7 +37,6 @@ public class InicioForm extends JFrame {
 
         txtTetris.setFont(new java.awt.Font("Dialog", 0, 48)); // NOI18N
         txtTetris.setText("TETRIS");
-
         jButton1.setText("Iniciar Juego");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,8 +44,8 @@ public class InicioForm extends JFrame {
             }
         });
 
-        jButton2.setText("Puntuaciones");
-        jButton3.setText("Intrucciones");
+       // jButton2.setText("Puntuaciones");
+        jButton3.setText("Instrucciones");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -67,7 +66,6 @@ public class InicioForm extends JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                                         .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -79,8 +77,6 @@ public class InicioForm extends JFrame {
                                 .addContainerGap()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(85, 85, 85)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(85, 85, 85)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(85, 85, 85)
@@ -133,7 +129,6 @@ public class InicioForm extends JFrame {
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
         );
-
         pack();
     }// </editor-fold>
 
@@ -146,7 +141,7 @@ public class InicioForm extends JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt){
         dispose();
-        Instrucciones instrucciones = new Instrucciones();
+        Instrucciones2 instrucciones = new Instrucciones2();
         instrucciones.setVisible(true);
         instrucciones.setLocationRelativeTo(null);
     }
@@ -160,7 +155,6 @@ public class InicioForm extends JFrame {
 
     // Variables declaration - do not modify
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

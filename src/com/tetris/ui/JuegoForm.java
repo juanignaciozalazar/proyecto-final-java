@@ -12,17 +12,18 @@ public class JuegoForm extends JFrame implements InfoArea {
 
     private JPanel background;
     private JPanel placeholder;
-    private JLabel puntaje;
-    private JLabel nivel;
     private AreaJuego areaJuego;
-    private Instrucciones instrucciones;
+    private javax.swing.JButton jButton1;
+
+
 
     public JuegoForm(int displayWidth, int displayHeight) {
-
         // Configuracion basica de la ventana
         super("Tetris");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
+
+        initComponents();
 
         // Creacion de ventana
         int width = 800;
@@ -36,30 +37,10 @@ public class JuegoForm extends JFrame implements InfoArea {
         // Creacion de placeholder para determinar el area de juego
         placeholder = new JPanel();
         createPlaceHolder(placeholder, 800, 600);
-        
+
         // Instanciación de area de juego
         areaJuego = new AreaJuego(placeholder);
         this.add(areaJuego);
-
-        // Creacion de ventanas de puntuación y nivel.
-
-        Font mifuente = new Font("Arial", 0, 20);
-
-        puntaje = new JLabel();
-        puntaje.setBounds(areaJuego.getX() + areaJuego.getWidth() + 20, areaJuego.getY(), 200, 100);
-        puntaje.setFont(mifuente);
-        puntaje.setForeground(Color.WHITE);
-        puntaje.setText("PUNTUACION :\n");
-        puntaje.setVisible(true);
-        this.add(puntaje);
-
-        nivel = new JLabel();
-        nivel.setBounds(areaJuego.getX() + areaJuego.getWidth() + 20, areaJuego.getY() + 100, 200, 100);
-        nivel.setFont(mifuente);
-        nivel.setForeground(Color.WHITE);
-        nivel.setText("NIVEL: ");
-        nivel.setVisible(true);
-        this.add(nivel);
 
         //Creacion de panel del background
         background = new JPanel();
@@ -74,6 +55,49 @@ public class JuegoForm extends JFrame implements InfoArea {
         iniciarJuego();
 
 
+    }
+
+    private void initComponents() {
+
+        jButton1 = new javax.swing.JButton();
+        jButton1.setFocusable(false);
+        //Si dejamos que el boton para retroceder sea focuseable, desactiva las teclas para poder jugar ya que se centra en el botón de atrás
+        //para ser activado con el espacio, ignorando el juego por completo.
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setIcon(new javax.swing.ImageIcon("assets\\pngwing.com.png")); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(jButton1)
+                                .addContainerGap(715, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jButton1)
+                                .addContainerGap(379, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        dispose();
+        InicioForm form = new InicioForm();
+        form.setVisible(true);
+        form.setLocationRelativeTo(null);
     }
 
 

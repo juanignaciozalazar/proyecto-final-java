@@ -1,5 +1,6 @@
 package com.tetris.game;
 
+import com.tetris.ui.JuegoForm;
 import com.tetris.util.ColorDecoder;
 import com.tetris.util.InfoArea;
 import com.tetris.Tetromino;
