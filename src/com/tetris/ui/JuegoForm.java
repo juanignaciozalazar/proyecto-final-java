@@ -66,7 +66,7 @@ public class JuegoForm extends JFrame implements InfoArea {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setIcon(new javax.swing.ImageIcon("assets\\pngwing.com.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("assets/pngwing.com.png")); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
